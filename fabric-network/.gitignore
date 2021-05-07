@@ -1,0 +1,14 @@
+/organizations/fabric-ca/*
+/organizations/ordererOrganizations/*
+/organizations/peerOrganizations/*
+/docker/*.yaml
+/scripts/bin/*
+/scripts/config/*
+/config/*
+/system-genesis-block/*
+/channel-artifacts/*
+/utils/port-env.sh
+log.txt
+deploy-log.txt
+/package/*
+*.tar.gz

@@ -1,0 +1,39 @@
+{
+    "name": "healthcare-app",
+    "version": "1.0.0",
+    "description": "Electronic Medical Record contracts implemented in JavaScript.",
+    "main": "index.js",
+    "engines": {
+        "node": ">=12",
+        "npm": ">=5"
+    },
+    "scripts": {
+        "lint": "node ./node_modules/eslint/bin/eslint .",
+        "pretest": "npm run lint",
+        "start": "fabric-chaincode-node start",
+        "install-bootstrap": "cd ../fabric-network/scripts && bash install.sh --bootstrap",
+        "install-prereqs": "cd ../fabric-network/scripts && bash install.sh --prereqs",
+        "create-network": "cd ../fabric-network/scripts && bash createNetwork.sh --org medicalprovider --admin-user skadaruser --admin-pwd pass",
+        "create-channel": "cd ../fabric-network/scripts && bash createChannel.sh --channel-name skadar --org-creator medicalprovider",
+        "join-orgs": "cd ../fabric-network/scripts && bash joinOrganizations.sh --channel-name skadar --org medicalprovider",
+        "create-user": "cd ../fabric-network/scripts && bash createUser.sh",
+        "create-healthcenter": "cd ../fabric-network/scripts && bash createUser.sh --org medicalprovider --user-name healthcenter01 --user-pwd password --user-role healthcenter",
+        "create-patient": "cd ../fabric-network/scripts && bash createUser.sh --org medicalprovider --user-name patient01 --user-pwd password --user-role patient",
+        "create-physician": "cd ../fabric-network/scripts && bash createUser.sh --org medicalprovider --user-name physician01 --user-pwd password --user-role physician",
+        "list-users": "cd ../fabric-network/scripts && bash createUser.sh --list --org medicalprovider",
+        "deploy-init": "cd ../fabric-network/scripts && bash deploycc.sh --cc-name carenet --cc-path ../chaincode-carenet/ --cc-version 1.0 --cc-sequence 1 --channel-name skadar --org medicalprovider",
+        "deploy": "cd ../fabric-network/scripts && bash deploycc.sh",
+        "invoke": "cd ../fabric-network/scripts && bash deploycc.sh --invoke ",
+        "delete-network": "cd ../fabric-network/scripts && bash createNetwork.sh --delete"
+    },
+    "engineStrict": true,
+    "author": "Skadar",
+    "license": "Apache-2.0",
+    "dependencies": {
+        "fabric-contract-api": "^2.0.0",
+        "fabric-shim": "^2.0.0"
+    },
+    "devDependencies": {
+        "eslint": "^7.24.0"
+    }
+}
